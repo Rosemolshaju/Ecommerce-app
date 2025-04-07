@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from models import Product
+from models import Products
 from database import SessionLocal
 
 router = APIRouter()
@@ -13,12 +13,12 @@ def get_db():
         db.close()
 
 @router.post("/")
-def create_product(name: str, description: str, price: float, db: Session = Depends(get_db)):
-    product = Product(name=name, description=description, price=price)
-    db.add(product)
+def create_products(name: str, description: str, price: float, db: Session = Depends(get_db)):
+    products = Products(name=name, description=description, price=price)
+    db.add(products)
     db.commit()
-    db.refresh(product)
-    return product
+    db.refresh(products)
+    return products
 
 @router.get("/")
 def get_products(db: Session = Depends(get_db)):
