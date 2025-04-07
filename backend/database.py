@@ -2,7 +2,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-DATABASE_URL = "postgresql://username:password@localhost/ecommerce_db"
+# Update this connection string with your actual PostgreSQL credentials
+DATABASE_URL = "postgresql://your_username:your_password@0.0.0.0/your_database_name"
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
