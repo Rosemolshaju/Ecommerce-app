@@ -17,7 +17,7 @@ class User(Base):
     email = Column(String, unique=True, index=True)
     password = Column(String)
 
-class cart(Base):
+class Cart(Base):
     __tablename__ = 'cart_item'
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)
