@@ -4,12 +4,10 @@ from passlib.context import CryptContext
 from models import User
 from database import get_db
 import jwt
-
 router = APIRouter(prefix="/users", tags=["Users"])
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 SECRET_KEY = "your-secret-key"
 ALGORITHM = "HS256"
-
 @router.post("/register")
 def register(username: str, email: str, password: str, db: Session = Depends(get_db)):
     hashed_password = pwd_context.hash(password)
@@ -17,7 +15,6 @@ def register(username: str, email: str, password: str, db: Session = Depends(get
     db.add(user)
     db.commit()
     return {"message": "User registered successfully"}
-
 @router.post("/login")
 def login(username: str, password: str, db: Session = Depends(get_db)):
     user = db.query(User).filter(User.username == username).first()
