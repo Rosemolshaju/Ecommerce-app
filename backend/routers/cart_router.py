@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from models import CartItem
+from models import Cart
 from database import SessionLocal
 
 router = APIRouter()
